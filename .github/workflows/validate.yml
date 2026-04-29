@@ -62,7 +62,8 @@ jobs:
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: 22 # Active LTS version
+          node-version: 24
+          registry-url: 'https://registry.npmjs.org/'
 
       - name: 📥 Download deps
         uses: bahmutov/npm-install@v1
@@ -76,6 +77,8 @@ jobs:
         uses: cycjimmy/semantic-release-action@v5.0.2
         with:
           semantic_version: 25
+          extra_plugins: |
+            @semantic-release/npm@13
           branches: |
             [
               '+([0-9])?(.{+([0-9]),x}).x',
